@@ -9,10 +9,10 @@ define(function(require) {
 
     // ideally these would be "discovered" by the test runner.
     require('/test/actionCreators.spec.js');
-    require('/test/components/card.spec.js');
-    require('/test/components/cardList.spec.js');
-    require('/test/components/streams.spec.js');
-    require('/test/containers/twitchStream.spec.js');
+    require('/test/components/Card.spec.js');
+    require('/test/components/CardList.spec.js');
+    require('/test/components/Streams.spec.js');
+    require('/test/containers/TwitchStream.spec.js');
     require('/test/reducers/navigation.spec.js');
     require('/test/reducers/streams.spec.js');
     require('/test/utils/i18n.spec.js');
