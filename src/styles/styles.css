@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0 10px;
+}
+
+.layout {
+    max-width: 1080px;
+    margin: 30px auto;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.header {
+    padding: 46px 0 26px 30px;
+    border-bottom: 1px solid black;
+}
+
+.card-list {
+    padding: 10px 30px;
+    list-style: none;
+}
+
+.card {
+    margin-bottom: 20px;
+}
