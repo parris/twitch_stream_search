@@ -1,11 +1,11 @@
 define(function(require) {
     'use strict';
 
-    const renderer = require('/src/utils/renderer.js');
+    const { renderer } = require('/src/utils/renderer.js');
     const createStore = require('/src/utils/store.js');
     const testUtils = require('/src/utils/testUtils.js');
 
-    const unitTestRunner = require('/src/containers/unitTestRunner.js');
+    const UnitTestRunner = require('/src/containers/UnitTestRunner.js');
 
     // ideally these would be "discovered" by the test runner.
     require('/test/actionCreators.spec.js');
@@ -25,7 +25,7 @@ define(function(require) {
             createStore({
                 initialState: results,
             }),
-            unitTestRunner
+            UnitTestRunner
         );
     };
 });

@@ -1,10 +1,10 @@
 define(function(require) {
     'use strict';
 
-    const renderer = require('/src/utils/renderer.js');
+    const { renderer } = require('/src/utils/renderer.js');
     const createStore = require('/src/utils/store.js');
 
-    const twitchStream = require('/src/containers/twitchStream.js');
+    const TwitchStream = require('/src/containers/TwitchStream.js');
 
     return function() {
         let store = createStore({
@@ -17,7 +17,7 @@ define(function(require) {
         renderer(
             document.querySelector('.js-root'),
             store,
-            twitchStream
+            TwitchStream
         );
     };
 });

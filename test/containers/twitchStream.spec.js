@@ -4,7 +4,7 @@ define(function(require) {
     const createStore = require('/src/utils/store.js');
     const { describe, it, expect } = require('/src/utils/testUtils.js');
 
-    const twitchStream = require('/src/containers/twitchStream.js');
+    const TwitchStream = require('/src/containers/TwitchStream.js');
 
     describe('TwitchStream', function() {
 

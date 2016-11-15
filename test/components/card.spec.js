@@ -1,9 +1,10 @@
 define(function(require) {
     'use strict';
 
+    const { renderComponentTree } = require('/src/utils/renderer.js');
     const { describe, it, expect } = require('/src/utils/testUtils.js');
 
-    const card = require('/src/components/card.js');
+    const Card = require('/src/components/Card.js');
 
     describe('Card', function() {
 
@@ -11,7 +12,9 @@ define(function(require) {
             let testName = '123';
 
             expect(
-                card({ name: testName, }).indexOf(testName) !== -1
+                renderComponentTree(
+                    Card, { stream: { name: testName }, }
+                ).html.indexOf(testName) !== -1
             ).toEqual(true);
         });
 

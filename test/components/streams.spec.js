@@ -1,10 +1,11 @@
 define(function(require) {
     'use strict';
 
+    const { renderComponentTree } = require('/src/utils/renderer.js');
     const createStore = require('/src/utils/store.js');
     const { describe, it, expect } = require('/src/utils/testUtils.js');
 
-    const streams = require('/src/components/streams.js');
+    const Streams = require('/src/components/Streams.js');
 
     describe('Streams', function() {
 
@@ -16,6 +17,7 @@ define(function(require) {
             ];
             let store = createStore({
                 initialState: {
+                    actions: {},
                     streams: streamList,
                     navigation: {
                         query: ''
@@ -23,7 +25,9 @@ define(function(require) {
                 },
             });
 
-            let rendered = streams(store.getState());
+            let rendered = renderComponentTree(
+                Streams, store.getState()
+            ).html;
 
             expect(
                 rendered.indexOf(streamList[0].name) !== -1
@@ -46,6 +50,7 @@ define(function(require) {
             ];
             let store = createStore({
                 initialState: {
+                    actions: {},
                     streams: streamList,
                     navigation: {
                         query: ''
@@ -53,7 +58,9 @@ define(function(require) {
                 },
             });
 
-            let rendered = streams(store.getState());
+            let rendered = renderComponentTree(
+                Streams, store.getState()
+            ).html;
 
             expect(
                 rendered.indexOf('type="text"') !== -1

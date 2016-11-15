@@ -1,62 +1,60 @@
 define(function(require) {
     'use strict';
 
-    function allPassed(props) {
-        let listItems = props.passedTests.map(
-            function(passedTest) { return passedTest; }
-        ).reduce(function(memo, html) {
-            return memo + `<li>${ html }</li>`;
-        }, '');
+    const build = require('/src/utils/componentBuilder.js');
+    const Component = require('/src/components/Component.js');
+    const { Article, H1, H2, Ul, Li, P } = require('/src/components/BasicComponents.js');
 
-        return (`
-            <article>
-                <p>
-                    <h1>Test Runner</h1>
-                </p>
-                <p>Fail Count: ${props.failCount}</p>
-                <p>Pass Count: ${props.passCount}</p>
-                <p>✓ All is good!</p>
-                <p>
-                    <h2>Passed:</h2>
-                    <ul>
-                        ${ listItems }
-                    </ul>
-                </p>
-            </article>
-        `);
-    };
+    class AllPassed extends Component {
+        render() {
+            let listItems = this.props.passedTests.map(
+                function(passedTest) { return build(Li, {}, [passedTest]); }
+            )
 
-    function someFailed(props) {
-        let listItems = props.failedTests.map(
-            function(failedTest) { return failedTest; }
-        ).reduce(function(memo, html) {
-            return memo + `<li>${ html }</li>`;
-        }, '');
-
-        return (`
-            <article>
-                <p>
-                    <h1>Test Runner</h1>
-                    <p>Fail Count: ${props.failCount}</p>
-                    <p>Pass Count: ${props.passCount}</p>
-                </p>
-                <p>
-                    <h2>Failures:</h2>
-                    <ul>
-                        ${ listItems }
-                    </ul>
-                </p>
-            </article>
-        `);
-    };
-
-    return function unitTestRunner(props) {
-        let state = props.getState();
-        if (state.failCount === 0) {
-            return allPassed(state);
+            return build(
+                Article, {}, [
+                    build(P, {}, [build(H1, {}, ['Test Runner'])]),
+                    build(P, {}, [`Pass Count: ${this.props.passCount}`]),
+                    build(P, {}, [`Fail Count: ${this.props.failCount}`]),
+                    build(P, {}, ['✓ All is good!']),
+                    build(P, {}, [
+                        build(H2, {}, 'Passed:'),
+                        build(Ul, {}, listItems),
+                    ]),
+                ]
+            );
         }
+    }
 
-        return someFailed(state);
+    class SomeFailed extends Component {
+        render() {
+            let listItems = this.props.failedTests.map(
+                function(failedTest) { return build(Li, {}, [failedTest]); }
+            )
+
+            return build(
+                Article, {}, [
+                    build(P, {}, [build(H1, {}, ['Test Runner'])]),
+                    build(P, {}, [`Pass Count: ${this.props.passCount}`]),
+                    build(P, {}, [`Fail Count: ${this.props.failCount}`]),
+                    build(P, {}, [
+                        build(H2, {}, 'Failures:'),
+                        build(Ul, {}, listItems),
+                    ]),
+                ]
+            );
+        }
+    }
+
+    return class UnitTestRunner extends Component {
+        render() {
+            let state = this.props.getState();
+            if (state.failCount === 0) {
+                return build(AllPassed, state);
+            }
+
+            return build(SomeFailed, state);
+        }
     };
 
 });
