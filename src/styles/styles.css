@@ -19,11 +19,27 @@ body {
     border-bottom: 1px solid black;
 }
 
-.card-list {
-    padding: 10px 30px;
-    list-style: none;
-}
 
+/*
+    Card and Card List Modules
+*/
+.card-list-container {
+    padding: 10px 30px;
+}
+.card-list-info {
+    display: flex;
+}
+.card-list-count, .card-list-controls {
+    flex: 1;
+}
+.card-list-controls {
+    text-align: right;
+}
+.card-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
 .card {
     margin-bottom: 20px;
 }
