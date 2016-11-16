@@ -11,6 +11,7 @@ define(function(require) {
     require('/test/actionCreators.spec.js');
     require('/test/components/Card.spec.js');
     require('/test/components/CardList.spec.js');
+    require('/test/components/CardListHeader.spec.js');
     require('/test/components/Streams.spec.js');
     require('/test/containers/TwitchStream.spec.js');
     require('/test/reducers/navigation.spec.js');
