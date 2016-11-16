@@ -87,6 +87,14 @@ define(function(require) {
 
     function addEvents(events) {
         events.forEach((event) => {
+            // note, this is currently problematic since it attaches to all
+            // matching DOM nodes on the page rather than the DOM nodes for the
+            // component in question. There are 2 solutions for this off the top
+            // of my head.
+            //
+            // 1. We could lint for duplicate class names and prevent collisions.
+            // 2. We can change this system to bind to elements, and remove
+            //    class names from the equation. This one will take some work.
             document.querySelectorAll(event.className).forEach((el) => {
                 el.addEventListener(event.eventType, event.callback);
             });
