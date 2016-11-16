@@ -16,6 +16,7 @@ define(function(require) {
     require('/test/reducers/navigation.spec.js');
     require('/test/reducers/streams.spec.js');
     require('/test/utils/i18n.spec.js');
+    require('/test/utils/renderer.spec.js');
     require('/test/utils/store.spec.js');
 
     return function() {
