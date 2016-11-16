@@ -24,7 +24,7 @@ define(function(require) {
 
             expect(
                 renderComponentTree(
-                    CardListContainer, {}
+                    build(CardListContainer, {})
                 ).html.indexOf(name) !== -1
             ).toEqual(true);
         });

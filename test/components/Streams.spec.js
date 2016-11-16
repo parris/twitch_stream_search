@@ -1,6 +1,7 @@
 define(function(require) {
     'use strict';
 
+    const build = require('/src/utils/componentBuilder.js');
     const { renderComponentTree } = require('/src/utils/renderer.js');
     const createStore = require('/src/utils/store.js');
     const { describe, it, expect } = require('/src/utils/testUtils.js');
@@ -26,7 +27,7 @@ define(function(require) {
             });
 
             let rendered = renderComponentTree(
-                Streams, store.getState()
+                build(Streams, store.getState())
             ).html;
 
             expect(
@@ -59,7 +60,7 @@ define(function(require) {
             });
 
             let rendered = renderComponentTree(
-                Streams, store.getState()
+                build(Streams, store.getState())
             ).html;
 
             expect(

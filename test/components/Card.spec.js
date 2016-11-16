@@ -1,6 +1,7 @@
 define(function(require) {
     'use strict';
 
+    const build = require('/src/utils/componentBuilder.js');
     const { renderComponentTree } = require('/src/utils/renderer.js');
     const { describe, it, expect } = require('/src/utils/testUtils.js');
 
@@ -10,10 +11,9 @@ define(function(require) {
 
         it('contains the stream name', function() {
             let testName = '123';
-
             expect(
                 renderComponentTree(
-                    Card, { stream: { name: testName }, }
+                    build(Card, { stream: { name: testName }, })
                 ).html.indexOf(testName) !== -1
             ).toEqual(true);
         });

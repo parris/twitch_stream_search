@@ -31,8 +31,7 @@ define(function(require) {
         return results;
     }
 
-    function renderComponentTree(Component, store) {
-        let tree = build(Component, store);
+    function renderComponentTree(tree) {
         let html = '';
         let events = [];
 
@@ -42,9 +41,9 @@ define(function(require) {
                 return '';
             }
 
-            // handle plain text
-            if (typeof tree === 'string') {
-                return tree;
+            // handle plain text and numbers
+            if (typeof tree === 'string' || typeof tree === 'number') {
+                return String(tree);
             }
 
             if (tree.events) {
@@ -98,7 +97,7 @@ define(function(require) {
         let lastEventListeners = [];
 
         store.addListener(function() {
-            let componentTree = renderComponentTree(Component, store);
+            let componentTree = renderComponentTree(build(Component, store));
 
             removeEvents(lastEventListeners);
             el.innerHTML = componentTree.html;
@@ -106,7 +105,7 @@ define(function(require) {
             addEvents(lastEventListeners);
         });
 
-        let componentTree = renderComponentTree(Component, store);
+        let componentTree = renderComponentTree(build(Component, store));
         el.innerHTML = componentTree.html;
         lastEventListeners = componentTree.events;
         addEvents(lastEventListeners);
