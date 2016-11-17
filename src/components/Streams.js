@@ -25,11 +25,11 @@ define(function(require) {
                 }, []),
                 build(Div, { className: 'card-list-container', }, [
                     build(CardListHeader, {
-                        count: this.props.navigation.total,
                         onPrev: this.props.actions.searchPrev,
                         hasPrev: Boolean(this.props.navigation.prev),
                         onNext: this.props.actions.searchNext,
                         hasNext: Boolean(this.props.navigation.next),
+                        info: this.props.navigation,
                     }, []),
                     build(CardList, {}, cards),
                 ]),

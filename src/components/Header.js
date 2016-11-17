@@ -23,12 +23,13 @@ define(function(require) {
                 build(Form, { className: 'js-query-form header', }, [
                     build(Input, {
                         type: 'text',
-                        className: 'js-query-input',
+                        className: 'search-input js-query-input',
                         value: this.props.query,
                         placeholder: i18n('Search query...'),
                     }),
                     build(Input, {
                         type: 'submit',
+                        className: 'search-button js-query-input',
                         value: i18n('Search'),
                     }),
                 ])

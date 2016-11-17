@@ -5,13 +5,17 @@
 body {
     margin: 0;
     padding: 0 10px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .layout {
-    max-width: 1080px;
+    max-width: 650px;
     margin: 30px auto;
     width: 100%;
     border: 1px solid black;
+}
+.l-align-right {
+    text-align: right;
 }
 
 .header {
@@ -19,10 +23,62 @@ body {
     border-bottom: 1px solid black;
 }
 
+/* Reset */
+p {
+    margin: 10px 0 0 0;
+    padding: 0;
+}
 
-/*
-    Card and Card List Modules
-*/
+/* Triangles */
+.triangle--left {
+    display: inline-block;
+
+    /* button reset */
+    background: none repeat scroll 0 0 transparent;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 8.7px 5px 0;
+    border-color: transparent #666666 transparent transparent;
+}
+.triangle--right {
+    display: inline-block;
+
+    /* button reset */
+    background: none repeat scroll 0 0 transparent;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 8.7px;
+    border-color: transparent transparent transparent #666666;
+}
+/* Pagination */
+.pagination-button {
+    vertical-align: middle;
+    /* accounts for positioning, only due to it being a button vs anchor tag */
+    margin-bottom: 3px;
+}
+.pagination-button:disabled {
+    border-color: transparent transparent transparent #ccc;
+}
+
+/* Search */
+.search-button {
+    font-size: 16px;
+}
+.search-input {
+    font-size: 12px;
+}
+
+/* Card and Card List Modules */
 .card-list-container {
     padding: 10px 30px;
 }
@@ -31,9 +87,6 @@ body {
 }
 .card-list-count, .card-list-controls {
     flex: 1;
-}
-.card-list-controls {
-    text-align: right;
 }
 .card-list {
     list-style: none;

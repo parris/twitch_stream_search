@@ -13,25 +13,35 @@ define(function(require) {
         it('disables prev/next buttons when there are no links', function() {
             expect(
                 renderComponentTree(
-                    build(CardListHeader, { hasNext: false, hasPrev: false, }, [])
+                    build(CardListHeader, { hasNext: false, hasPrev: false, info: { total: 50, totalPages: 10, }, }, [])
                 ).html.match(/disabled/g).length
             ).toEqual(4); // 4 means, disabled="disabled" 2 times
 
             expect(
                 renderComponentTree(
-                    build(CardListHeader, { hasNext: false, hasPrev: true, }, [])
+                    build(CardListHeader, { hasNext: false, hasPrev: true, info: { total: 50, totalPages: 10, }, }, [])
                 ).html.match(/disabled/g).length
-            ).toEqual(3);
+            ).toEqual(2);
 
             expect(
                 renderComponentTree(
-                    build(CardListHeader, { hasNext: true, hasPrev: false, }, [])
+                    build(CardListHeader, { hasNext: true, hasPrev: false, info: { total: 50, totalPages: 10, }, }, [])
                 ).html.match(/disabled/g).length
-            ).toEqual(3);
+            ).toEqual(2);
 
             expect(
                 renderComponentTree(
-                    build(CardListHeader, { hasNext: true, hasPrev: true, }, [])
+                    build(CardListHeader, { hasNext: true, hasPrev: true, info: { total: 50, totalPages: 10, }, }, [])
+                ).html.match(/disabled/g)
+            ).toEqual(null);
+
+            expect(
+                renderComponentTree(
+                    build(CardListHeader, {
+                        hasNext: true,
+                        hasPrev: true,
+                        info: { total: 50, currentPage: 10, totalPages: 10, },
+                    }, [])
                 ).html.match(/disabled/g).length
             ).toEqual(2);
         });
