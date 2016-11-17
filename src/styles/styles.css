@@ -29,6 +29,17 @@ p {
     padding: 0;
 }
 
+/* Fake image loading */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+img {
+    animation-duration: 2s;
+    animation-name: fadeIn;
+    background: black;
+}
+
 /* Triangles */
 .triangle--left {
     display: inline-block;
