@@ -12,10 +12,26 @@ define(function(require) {
         }
     }
 
+    class Header extends Component {
+        render() {
+            return (
+                build('header', this.props, this.children)
+            );
+        }
+    }
+
     class Button extends Component {
         render() {
             return (
                 build('button', this.props, this.children)
+            );
+        }
+    }
+
+    class A extends Component {
+        render() {
+            return (
+                build('a', this.props, this.children)
             );
         }
     }
@@ -94,7 +110,9 @@ define(function(require) {
 
     return {
         Div: Div,
+        Header: Header,
         Button: Button,
+        A: A,
         Article: Article,
         H1: H1,
         H2: H2,

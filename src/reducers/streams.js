@@ -13,8 +13,9 @@ define(function(require) {
             return state = action.payload.streams.map((stream) => {
                 return {
                     name: stream.channel['display_name'],
+                    viewers: stream.viewers,
                     game: stream.channel.game,
-                    image: stream.preview.small,
+                    image: stream.preview.template.replace('{width}', 100).replace('{height}', 90),
                     description: stream.channel.status,
                     url: stream.channel.url,
                 };
