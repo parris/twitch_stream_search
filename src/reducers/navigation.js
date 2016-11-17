@@ -10,6 +10,9 @@ define(function(require) {
         prev: '',
         self: '',
         total: 0,
+        pageSize: 0,
+        totalPages: 0,
+        currentPage: 0,
     };
 
     const transformers = {
@@ -21,9 +24,18 @@ define(function(require) {
                 prev: '',
                 self: '',
                 total: 0,
+                pageSize: 0,
+                totalPages: 0,
+                currentPage: 0,
             };
         },
         [actionTypes.searchComplete]: function(state, action) {
+            let currentPage = state.currentPage;
+
+            if (action.meta.newSearch) { currentPage = 1; }
+            if (action.meta.inc) { currentPage++; }
+            if (action.meta.dec) { currentPage--; }
+
             return Object.assign(
                 state,
                 {
@@ -32,6 +44,9 @@ define(function(require) {
                     prev: action.payload['_links'].prev,
                     self: action.payload['_links'].self,
                     total: action.payload['_total'],
+                    pageSize: action.meta.pageSize,
+                    totalPages: Math.ceil(action.payload['_total']/action.meta.pageSize),
+                    currentPage: currentPage,
                 }
             );
         },

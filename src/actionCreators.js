@@ -19,6 +19,10 @@ define(function(require) {
                 dispatch({
                     type: actionTypes.searchComplete,
                     payload: data,
+                    meta: {
+                        pageSize: settings.twitchSearchLimit,
+                        dec: true,
+                    }
                 });
             });
         },
@@ -29,16 +33,24 @@ define(function(require) {
                 dispatch({
                     type: actionTypes.searchComplete,
                     payload: data,
+                    meta: {
+                        pageSize: settings.twitchSearchLimit,
+                        inc: true,
+                    }
                 });
             });
         },
         searchForStreams: function(dispatch, query) {
             request.jsonp(
-                `${twitchSearchURL}?q=${query}&client_id=${settings.twitchClientID}`
+                `${twitchSearchURL}?q=${query}&client_id=${settings.twitchClientID}&limit=${settings.twitchSearchLimit}`
             ).then(function(data) {
                 dispatch({
                     type: actionTypes.searchComplete,
                     payload: data,
+                    meta: {
+                        pageSize: settings.twitchSearchLimit,
+                        newSearch: true,
+                    }
                 });
             });
 

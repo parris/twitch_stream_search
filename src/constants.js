@@ -10,6 +10,7 @@ define(function(require) {
 
         settings: {
             twitchClientID: '62zdxm04emtu9v2zmzhewg1zomghywk',
+            twitchSearchLimit: 5,
         },
     });
 

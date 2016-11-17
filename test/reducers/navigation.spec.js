@@ -35,6 +35,7 @@ define(function(require) {
                         payload: {
                             query: 'test',
                         },
+                        meta: {},
                     }
                 ).query
             ).toEqual('test');
@@ -54,6 +55,7 @@ define(function(require) {
                     },
                     '_total': 4,
                 },
+                meta: {},
             };
             expect(
                 navigation(state, action).loading
@@ -74,6 +76,7 @@ define(function(require) {
                     },
                     '_total': 4,
                 },
+                meta: {},
             };
             let newState = navigation(state, action);
 
@@ -81,6 +84,57 @@ define(function(require) {
             expect(newState.prev).toEqual('2');
             expect(newState.self).toEqual('3');
             expect(newState.total).toEqual(4);
+        });
+
+        it('hangs on to a counter to surface page number and total pages', function() {
+            let state = {
+                query: 'test',
+            };
+            let action = {
+                type: actionTypes.searchComplete,
+                payload: {
+                    '_links': {},
+                    '_total': 4,
+                },
+                meta: {
+                    pageSize: 1,
+                    newSearch: true,
+                },
+            };
+            let newState = navigation(state, action);
+
+            expect(newState.currentPage).toEqual(1);
+            expect(newState.totalPages).toEqual(4);
+
+            let action2 = {
+                type: actionTypes.searchComplete,
+                payload: {
+                    '_links': {},
+                    '_total': 4,
+                },
+                meta: {
+                    pageSize: 1,
+                    inc: true,
+                },
+            };
+            let newState2 = navigation(newState, action2);
+
+            expect(newState2.currentPage).toEqual(2);
+
+            let action3 = {
+                type: actionTypes.searchComplete,
+                payload: {
+                    '_links': {},
+                    '_total': 4,
+                },
+                meta: {
+                    pageSize: 1,
+                    dec: true,
+                },
+            };
+            let newState3 = navigation(newState2, action3);
+
+            expect(newState3.currentPage).toEqual(1);
         });
 
     });
