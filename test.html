@@ -4,6 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Test Runner</title>
+    <script>
+        // configure settings, if localhost else prod
+        if (window.location.href.indexOf('localhost') !== -1) {
+            window.requireSettings = {
+                baseURL: '',
+            };
+        } else {
+            window.requireSettings = {
+                baseURL: '/twitchystream',
+            };
+        }
+    </script>
     <script src="src/utils/simpleRequire.js"></script>
 </head>
 <body>

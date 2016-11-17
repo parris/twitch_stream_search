@@ -46,7 +46,7 @@ function makeRequest(path) {
             reject(new JSLoadError(path));
             throw new JSLoadError(path);
         });
-        request.open('GET', path);
+        request.open('GET', window.requireSettings.baseURL + path);
         request.send();
     });
 
