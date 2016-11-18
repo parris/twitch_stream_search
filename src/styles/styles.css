@@ -28,12 +28,7 @@ body {
     background-size: contain;
     height: 250px;
     display: flex;
-    background: url('./logo@1x.png') no-repeat center 20px;
-}
-@media all and (-webkit-min-device-pixel-ratio: 2) {
-    .header {
-        background: url('./logo@2x.png') no-repeat center 20px;
-    }
+    background: url('./logo@2x.png') no-repeat center 20px;
 }
 .header__search {
     align-self: flex-end;
