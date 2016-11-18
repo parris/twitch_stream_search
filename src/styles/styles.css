@@ -25,7 +25,7 @@ body {
 
 /* Reset */
 p {
-    margin: 10px 0 0 0;
+    margin: 5px 0 0 0;
     padding: 0;
 }
 
@@ -83,10 +83,20 @@ img {
 
 /* Search */
 .search-button {
-    font-size: 16px;
+    border: 1px solid #666;
+    padding: 5px 15px;
+    margin-left: 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    color: #666;
+    background: linear-gradient(#FDFDFD, #EAEAEA);
+    box-shadow: 0 1px #aaa;
 }
 .search-input {
     font-size: 12px;
+    font-style: italic;
+    border: 1px solid black;
+    padding: 5px;
 }
 
 /* Card and Card List Modules */
@@ -95,6 +105,7 @@ img {
 }
 .card-list-info {
     display: flex;
+    font-size: 13px;
 }
 .card-list-count, .card-list-controls {
     flex: 1;
@@ -115,6 +126,7 @@ img {
 .card__body {
     flex: 1;
     padding-left: 20px;
+    font-size: 13px;
 }
 .card__title {
     line-height: 28px;
