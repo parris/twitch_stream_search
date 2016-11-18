@@ -7,7 +7,7 @@ If you have Node.js, you can run:
 
     npm install -g http-server
     http-server
-    open http://localhost:8080/dev.html
+    open http://localhost:8080/index.html
 
 Architecture
 ----
