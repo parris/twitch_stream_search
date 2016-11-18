@@ -4,15 +4,20 @@
 
 body {
     margin: 0;
-    padding: 0 10px;
+    padding: 0;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    background: #000000;
+    color: white;
 }
 
 .layout {
-    max-width: 650px;
-    margin: 30px auto;
+    background: radial-gradient(ellipse at bottom center, rgba(68,192,255,0.55) 0%, rgba(0,0,0,1) 100%);
+    min-height: 100vh;
+}
+.layout__body {
+    max-width: 500px;
+    margin: 0 auto;
     width: 100%;
-    border: 1px solid black;
 }
 .l-align-right {
     text-align: right;
@@ -20,13 +25,30 @@ body {
 
 .header {
     padding: 46px 0 26px 30px;
-    border-bottom: 1px solid black;
+    background-size: contain;
+    height: 250px;
+    display: flex;
+    background: url('./logo@1x.png') no-repeat center 20px;
+}
+@media all and (-webkit-min-device-pixel-ratio: 2) {
+    .header {
+        background: url('./logo@2x.png') no-repeat center 20px;
+    }
+}
+.header__search {
+    align-self: flex-end;
+    margin: 0 auto;
+    padding-right: 25px;
 }
 
 /* Reset */
 p {
     margin: 5px 0 0 0;
     padding: 0;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+    color: white;
 }
 
 /* Fake image loading */
@@ -54,7 +76,7 @@ img {
     height: 0;
     border-style: solid;
     border-width: 5px 8.7px 5px 0;
-    border-color: transparent #666666 transparent transparent;
+    border-color: transparent rgba(68, 192, 255, 0.6) transparent transparent;
 }
 .triangle--right {
     display: inline-block;
@@ -69,7 +91,7 @@ img {
     height: 0;
     border-style: solid;
     border-width: 5px 0 5px 8.7px;
-    border-color: transparent transparent transparent #666666;
+    border-color: transparent transparent transparent rgba(68, 192, 255, 0.6);
 }
 /* Pagination */
 .pagination-button {
@@ -80,23 +102,37 @@ img {
 .pagination-button:disabled {
     border-color: transparent transparent transparent #ccc;
 }
+.pagination-button:focus {
+    outline: none;
+}
 
 /* Search */
 .search-button {
-    border: 1px solid #666;
+    border: 1px solid #44C0FF;
     padding: 5px 15px;
     margin-left: 10px;
     font-size: 12px;
-    border-radius: 3px;
-    color: #666;
-    background: linear-gradient(#FDFDFD, #EAEAEA);
-    box-shadow: 0 1px #aaa;
+    color: #44C0FF;
+    background: #2b2b2b;
+    box-shadow: 0 0 1px 0 #44C0FF;
 }
 .search-input {
     font-size: 12px;
     font-style: italic;
-    border: 1px solid black;
+    border: 0;
     padding: 5px;
+    background: transparent;
+    color: #44C0FF;
+    border-bottom: 1px solid rgba(68, 192, 255, 0.36);
+    transition: linear .25s;
+}
+.search-input::-webkit-input-placeholder {
+   color: rgba(68, 192, 255, 0.36);
+}
+.search-input:focus {
+    outline: none;
+    border-bottom: 1px solid #44C0FF;
+    transition:
 }
 
 /* Card and Card List Modules */

@@ -3,7 +3,7 @@ define(function(require) {
 
     const build = require('/src/utils/componentBuilder.js');
     const Component = require('/src/components/Component.js');
-    const { Form, Input } = require('/src/components/BasicComponents.js');
+    const { Div, Form, Input } = require('/src/components/BasicComponents.js');
     const i18n = require('/src/utils/i18n.js');
 
     return class Header extends Component {
@@ -21,17 +21,19 @@ define(function(require) {
         render() {
             return (
                 build(Form, { className: 'js-query-form header', }, [
-                    build(Input, {
-                        type: 'text',
-                        className: 'search-input js-query-input',
-                        value: this.props.query,
-                        placeholder: i18n('Search query...'),
-                    }),
-                    build(Input, {
-                        type: 'submit',
-                        className: 'search-button js-query-input',
-                        value: i18n('Search'),
-                    }),
+                    build(Div, { className: 'header__search', }, [
+                        build(Input, {
+                            type: 'text',
+                            className: 'search-input js-query-input',
+                            value: this.props.query,
+                            placeholder: i18n('Search query...'),
+                        }),
+                        build(Input, {
+                            type: 'submit',
+                            className: 'search-button js-query-input',
+                            value: i18n('Search'),
+                        }),
+                    ]),
                 ])
             );
         }

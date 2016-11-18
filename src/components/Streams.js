@@ -18,12 +18,12 @@ define(function(require) {
                 (stream) => build(Card, { stream: stream, })
             );
 
-            return build(Div, { className: 'layout'}, [
+            return build(Div, { className: 'layout', }, [
                 build(Header, {
                     onSearch: this.props.actions.search,
                     query: this.props.navigation.query,
                 }, []),
-                build(Div, { className: 'card-list-container', }, [
+                build(Div, { className: 'layout__body card-list-container', }, [
                     build(CardListHeader, {
                         onPrev: this.props.actions.searchPrev,
                         hasPrev: Boolean(this.props.navigation.prev),
