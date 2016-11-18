@@ -77,6 +77,7 @@ img {
     border-style: solid;
     border-width: 5px 8.7px 5px 0;
     border-color: transparent rgba(68, 192, 255, 0.6) transparent transparent;
+    cursor: pointer;
 }
 .triangle--right {
     display: inline-block;
@@ -92,6 +93,7 @@ img {
     border-style: solid;
     border-width: 5px 0 5px 8.7px;
     border-color: transparent transparent transparent rgba(68, 192, 255, 0.6);
+    cursor: pointer;
 }
 /* Pagination */
 .pagination-button {
