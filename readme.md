@@ -1,6 +1,3 @@
-How to Run
-----
-
 Dev Mode
 ----
 
@@ -23,8 +20,7 @@ Other conscious decisions
 ----
 * I've purposely avoided OOP and mostly stuck to a functional paradigm with a
   couple caveats.
-* My dependency managment system uses is a varient of the AMD spec. You don't
-  need NodeJS to run the app, but I've added a simple node script that optimizes
-  the page.
+* My dependency managment system uses is a varient of the AMD spec. This requires
+  some server.
 * I'm relying on some es2015 features that I know exist in chrome and firefox.
   Vanilla JS is very different in 2016.
