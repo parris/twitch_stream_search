@@ -1,8 +1,6 @@
 Dev Mode
 ----
 
-You can run the application without this; however, you will deal with compiled code.
-
 If you have Node.js, you can run:
 
     npm install -g http-server
